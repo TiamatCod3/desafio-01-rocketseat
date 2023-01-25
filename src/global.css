@@ -38,3 +38,7 @@ button {
     font-weight: 400;
     font-size: 0.875rem;
 }
+
+ul, ol, li{
+    list-style-type: none;  
+}
