@@ -20,6 +20,10 @@
     padding: 1rem;
 }
 
+.add-bar input[type='text']:focus-within{
+    border: 1px solid var(--gray-700);
+}
+
 .add-bar input[type='submit']{
     padding: 1.0625rem;
     background-color: var(--blue-dark);

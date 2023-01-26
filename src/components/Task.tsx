@@ -1,5 +1,5 @@
 import {Trash, Check} from 'phosphor-react'
-import { MouseEventHandler } from 'react'
+import { AnchorHTMLAttributes, DetailedHTMLProps, LinkHTMLAttributes, MouseEventHandler } from 'react'
 import styles from './Task.module.css'
 
 interface TaskProps{
@@ -25,7 +25,6 @@ export function Task({id, description, done, onCheckClick, onDeleteTask}:TaskPro
             <div className={styles.description}>
                 <div
                     className={done ? styles.checked : styles.unchecked}
-                    // className={styles.checkbox}
                     onClick={handleCheckClick}
                 >
                     <Check />
@@ -34,9 +33,9 @@ export function Task({id, description, done, onCheckClick, onDeleteTask}:TaskPro
                     {description}
                 </p>
             </div>
-            <a onClick={handleDeleteTask} className={styles.excluir} href="">
+            <div onClick={handleDeleteTask} className={styles.excluir}>
                 <Trash size={16} />
-            </a>
+            </div>
         </li>
     )
 }

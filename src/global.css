@@ -46,3 +46,8 @@ ul, ol, li{
 a, p{
     text-decoration: none;
 }
+
+:focus{
+    outline: transparent;
+    box-shadow: 0 0 0 2px var(--gray-300);
+}

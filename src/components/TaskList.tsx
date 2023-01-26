@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import {ClipboardText} from 'phosphor-react'
 import { AddBar } from './AddBar'
 import { Info } from './Info'
 import { Task } from './Task'
@@ -34,7 +35,7 @@ export function TaskList() {
 
     function addTask(newTaskDescription:string) {
         const newTask = {
-            id: tasks[tasks.length-1].id + 1,
+            id: Math.random() * 9999,
             description: newTaskDescription,
             done: false
         }
@@ -61,6 +62,35 @@ export function TaskList() {
         setTasks(tasksWithoutDeletedOne)
     }
 
+    function handleTaks() {
+        return (
+            <div className={styles.tasks}>
+                {tasks.sort((a,b)=>b.id-a.id).map(task=>{
+                    return(
+                        <Task 
+                        key={task.id}
+                        id={task.id}
+                        description={task.description}
+                        done={task.done}
+                        onCheckClick={changeTaskState}
+                        onDeleteTask={deleteTask}
+                        />
+                        )
+                    })}
+            </div>
+        )
+    }
+
+    function handleEmptyTasks() {
+        return (
+            <div className={styles['without-tasks']}>
+                <ClipboardText weight={'regular'} size={48}/>
+                <p>Você ainda não tem tarefas cadastradas</p>
+                <p>Crie tarefas e organize seus itens a fazer</p>
+            </div>
+        )
+    }
+
     return(
         <div className={styles['task-list']}>
             <AddBar 
@@ -71,18 +101,7 @@ export function TaskList() {
                 completed={tasks.filter(task=>task.done==true).length}            
             />
             {
-                tasks.map(task=>{
-                    return(
-                        <Task 
-                            key={task.id}
-                            id={task.id}
-                            description={task.description}
-                            done={task.done}
-                            onCheckClick={changeTaskState}
-                            onDeleteTask={deleteTask}
-                        />
-                    )
-                })
+                tasks.length > 0 ? handleTaks() : handleEmptyTasks()
             }
         </div>
     )
