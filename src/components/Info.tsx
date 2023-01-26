@@ -1,15 +1,20 @@
 import styles from './Info.module.css'
 
-export function Info(){
+interface InfoProps{
+    count: number,
+    completed: number
+}
+
+export function Info({count, completed}:InfoProps){
     return(
         <div className={styles.info}>
             <div className={styles.created}>
                 Tarefas criadas
-                <div>1</div>
+                <div>{count}</div>
             </div>
             <div className={styles.completed}>
                 Concluídas
-                <div>1</div>
+                <div>{completed} de {count}</div>
             </div>
         </div>
     )

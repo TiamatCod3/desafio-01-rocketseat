@@ -1,17 +1,41 @@
 import {Trash, Check} from 'phosphor-react'
+import { MouseEventHandler } from 'react'
 import styles from './Task.module.css'
 
-export function Task(){
+interface TaskProps{
+    id: number,
+   description: string,
+   done: boolean,
+   onCheckClick: (id:number) => void,
+   onDeleteTask: (id:number) => void
+}
+
+export function Task({id, description, done, onCheckClick, onDeleteTask}:TaskProps){
+
+    function handleCheckClick() {
+        onCheckClick(id)
+    }
+
+    function handleDeleteTask() {
+        onDeleteTask(id)
+    }
+    
     return (
         <li className={styles.task}>
-            <div className={styles.checkbox}>
-                <Check />
+            <div className={styles.description}>
+                <div
+                    className={done ? styles.checked : styles.unchecked}
+                    // className={styles.checkbox}
+                    onClick={handleCheckClick}
+                >
+                    <Check />
+                </div>
+                <p>
+                    {description}
+                </p>
             </div>
-            <p>
-                Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.
-            </p>
-            <a className={styles.excluir} href="">
-                <Trash size={14} />
+            <a onClick={handleDeleteTask} className={styles.excluir} href="">
+                <Trash size={16} />
             </a>
         </li>
     )

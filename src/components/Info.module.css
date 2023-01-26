@@ -21,7 +21,7 @@
 
 .completed div, .created div{
     background-color: var(--gray-400);
-    border-radius: 50%;
+    border-radius: 999px;
     font-size: 0.75rem;
     color: var(--gray-200);
     padding: 2px 8px;
