@@ -6,7 +6,7 @@
   "homepage": "https://tiamatcod3.github.io/desafio-01-rocketseat",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
