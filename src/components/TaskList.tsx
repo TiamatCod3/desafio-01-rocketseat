@@ -13,7 +13,7 @@ interface TaskProps{
 
 const tasksList = [
     {
-        id:1,
+        id:3,
         description: 'Modificar o serviço',
         done: false
     },
@@ -23,7 +23,7 @@ const tasksList = [
         done: false
     },
     {
-        id:3,
+        id:1,
         description: 'Varrer a casa',
         done: false
     }
@@ -34,8 +34,9 @@ export function TaskList() {
     const [tasks, setTasks] = useState(tasksList)
 
     function addTask(newTaskDescription:string) {
+        const newId = tasks.length > 0 ? tasks[0].id + 1 : 1
         const newTask = {
-            id: Math.random() * 9999,
+            id: newId,
             description: newTaskDescription,
             done: false
         }
